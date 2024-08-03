@@ -1,7 +1,7 @@
 import requests
 
 OAUTH_TOKEN = 'y0_AgAAAAAKSG8jAAw1TwAAAAEMhPSJAABD0B3UlfdMiooGaWG0E1k1QDV-YQ'
-FILE_PATH = 'disk:/playlist.m3u'
+FILE_PATH = 'disk:/playlist_iptv.m3u'
 
 channels = {
     "Русский Роман": "https://ser2.meningilovam.uz/rus_roman_web/tracks-v1a1/mono.m3u8?remote=94.25.231.197&token=f5193c542e5176ac3dfb935f41e31f1c4d478c13-76c5f56f3f837de0b380d0d17d751125-1722731887-1722721087",
