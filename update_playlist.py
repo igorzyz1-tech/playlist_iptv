@@ -6,7 +6,8 @@ FILE_PATH = 'disk:/playlist_iptv.m3u'
 channels = {
     "Русский Роман": "https://ser2.meningilovam.uz/rus_roman_web/tracks-v1a1/mono.m3u8?remote=94.25.231.197&token=f5193c542e5176ac3dfb935f41e31f1c4d478c13-76c5f56f3f837de0b380d0d17d751125-1722731887-1722721087",
     "Золотая Колекция": "https://ser2.meningilovam.uz/mos-film_web/tracks-v1a1/mono.m3u8?remote=94.25.231.197&token=6f9955f7d0bfb3ee3312fe07a8a752766727fd96-2cc3bbe755fd854061fcf2e7a116a0b3-1722732243-1722721443",
-    "Дом кино Премиум": "https://ser2.meningilovam.uz/dom-kino-premium_web/tracks-v1a1/mono.m3u8?remote=94.25.231.197&token=953c62321d60e6bde18d9652aa0ce75a525414b1-50a2110e0119283c5369c0eb533d6bb4-1722732509-1722721709"
+    "Дом кино Премиум": "https://ser2.meningilovam.uz/dom-kino-premium_web/tracks-v1a1/mono.m3u8?remote=94.25.231.197&token=953c62321d60e6bde18d9652aa0ce75a525414b1-50a2110e0119283c5369c0eb533d6bb4-1722732509-1722721709",
+    "Дом Кино": "https://ser1.meningilovam.uz/domkino_web/tracks-v1a1/mono.m3u8?remote=94.25.231.197&token=069cc011bafac6d848e7f99b591a2b97558d44ae-18018f09eb9c121e4c385f27007db61f-1722739987-1722729187"
 }
 
 def get_updated_links():
