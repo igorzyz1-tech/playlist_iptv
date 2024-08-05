@@ -6,16 +6,22 @@ def fetch_dynamic_url(channel_url):
         response = requests.get(channel_url)
         soup = BeautifulSoup(response.content, 'html.parser')
 
-        # Пример: Поиск ссылки на потоковое видео в HTML.
-        # Это нужно адаптировать под конкретный сайт.
-        script_tag = soup.find('script', text=lambda t: 'source:' in t if t else False)
-        if script_tag:
-            # Извлечение ссылки из текста скрипта
-            text = script_tag.string
-            start = text.find('source: "') + len('source: "')
-            end = text.find('"', start)
-            if start != -1 and end != -1:
-                return text[start:end]
+        # Поиск тега <iframe>
+        iframe_tag = soup.find('iframe')
+        if iframe_tag and 'src' in iframe_tag.attrs:
+            iframe_url = iframe_tag['src']
+            if iframe_url.startswith('//'):
+                iframe_url = 'https:' + iframe_url
+
+            # Теперь нужно открыть iframe URL, чтобы найти ссылку на поток
+            iframe_response = requests.get(iframe_url)
+            iframe_soup = BeautifulSoup(iframe_response.content, 'html.parser')
+            video_tag = iframe_soup.find('video')
+            if video_tag:
+                source_tag = video_tag.find('source')
+                if source_tag and 'src' in source_tag.attrs:
+                    return source_tag['src']
+
         return None
     except Exception as e:
         print(f'Error fetching URL for {channel_url}: {e}')
