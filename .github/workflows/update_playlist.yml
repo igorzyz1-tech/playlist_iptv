@@ -25,12 +25,12 @@ jobs:
           pip install requests beautifulsoup4
 
       - name: Run update script
-        run: python update_playlist.py  # Убедитесь, что путь указан правильно
+        run: python .github/update_playlist.py  # Обновленный путь
 
       - name: Commit and push changes
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
-          git add playlist.m3u
+          git add .github/playlist.m3u
           git commit -m 'Update playlist'
           git push
