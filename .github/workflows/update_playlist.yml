@@ -25,7 +25,7 @@ jobs:
           pip install requests beautifulsoup4
 
       - name: Run update script
-        run: python update_playlist.py
+        run: python update_playlist.py  # Убедитесь, что путь указан правильно
 
       - name: Commit and push changes
         run: |
