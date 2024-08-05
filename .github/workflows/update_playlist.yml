@@ -24,6 +24,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4
 
+      - name: Ensure playlist.m3u exists
+        run: touch .github/playlist.m3u
+
       - name: Run update script
         run: python .github/update_playlist.py  # Обновленный путь
 
