@@ -10,12 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3  # Обновление до последней версии
+        uses: actions/checkout@v3
         with:
           token: ${{ secrets.GH_TOKEN }}
 
       - name: Set up Python
-        uses: actions/setup-python@v3  # Обновление до последней версии
+        uses: actions/setup-python@v3
         with:
           python-version: '3.x'
 
@@ -28,7 +28,7 @@ jobs:
         run: touch .github/playlist.m3u
 
       - name: Run update script
-        run: python .github/update_playlist.py  # Обновленный путь
+        run: python .github/update_playlist.py
 
       - name: Add changes to git
         run: git add .github/playlist.m3u
@@ -37,5 +37,6 @@ jobs:
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
+          git add .github/playlist.m3u
           git commit -m 'Update playlist'
           git push
