@@ -25,18 +25,17 @@ jobs:
           pip install requests beautifulsoup4
 
       - name: Ensure playlist.m3u exists
-        run: touch .github/playlist.m3u
+        run: touch playlist.m3u
 
       - name: Run update script
         run: python .github/update_playlist.py
 
       - name: Add changes to git
-        run: git add .github/playlist.m3u
+        run: git add -u
 
       - name: Commit and push changes
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
-          git add .github/playlist.m3u
-          git commit -m 'Update playlist'
-          git push
+          git commit -m 'Update playlist' || echo "No changes to commit"
+          git push || echo "Nothing to push"
