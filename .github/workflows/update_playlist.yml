@@ -27,10 +27,12 @@ jobs:
       - name: Run update script
         run: python .github/update_playlist.py  # Обновленный путь
 
+      - name: Add changes to git
+        run: git add .github/playlist.m3u
+
       - name: Commit and push changes
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
-          git add .github/playlist.m3u
           git commit -m 'Update playlist'
           git push
