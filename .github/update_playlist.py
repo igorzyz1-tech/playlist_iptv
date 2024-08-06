@@ -4,6 +4,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 import requests
+from urllib.parse import urlparse, parse_qs
 
 def fetch_dynamic_url(channel_url, debug_file):
     try:
@@ -33,9 +34,22 @@ def fetch_dynamic_url(channel_url, debug_file):
                     # Проверка доступности URL
                     response = requests.get(stream_url, stream=True)
                     if response.status_code == 200:
-                        debug_file.write(f'URL is accessible: {stream_url}\n')
-                        driver.quit()
-                        return stream_url
+                        parsed_url = urlparse(stream_url)
+                        params = parse_qs(parsed_url.query)
+                        
+                        token = params.get('token', [None])[0]
+                        if token:
+                            expiry_time = int(token.split('-')[2])
+                            current_time = int(time.time())
+                            
+                            if current_time < expiry_time:
+                                debug_file.write(f'URL is accessible and valid: {stream_url}\n')
+                                driver.quit()
+                                return stream_url
+                            else:
+                                debug_file.write(f'Token has expired: {stream_url}\n')
+                        else:
+                            debug_file.write(f'No token found in URL: {stream_url}\n')
                     else:
                         debug_file.write(f'URL is not accessible, status code: {response.status_code}\n')
 
