@@ -1,19 +1,29 @@
-import requests
-from bs4 import BeautifulSoup
+import time
 import re
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from bs4 import BeautifulSoup
 
 def fetch_dynamic_url(channel_url, debug_file):
     try:
-        response = requests.get(channel_url)
-        response.raise_for_status()  # Проверка на успешный ответ
-        soup = BeautifulSoup(response.content, 'html.parser')
+        # Настройка Selenium WebDriver
+        options = webdriver.ChromeOptions()
+        options.add_argument("--headless")  # Запуск в фоновом режиме
+        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
+        driver.get(channel_url)
         debug_file.write(f'Fetched main page for {channel_url}\n')
+        time.sleep(5)  # Ждем загрузки страницы и выполнения скриптов
+
+        soup = BeautifulSoup(driver.page_source, 'html.parser')
 
         # Поиск ссылок, содержащих '.m3u8'
         for link in soup.find_all('a', href=True):
             debug_file.write(f'Checking link: {link["href"]}\n')
-            if re.search(r'\.m3u8', link['href']):
+            if '.m3u8' in link['href']:
                 debug_file.write(f'Found stream URL: {link["href"]}\n')
+                driver.quit()
                 return link['href']
 
         # Альтернативный поиск в тегах <iframe>
@@ -24,19 +34,20 @@ def fetch_dynamic_url(channel_url, debug_file):
                 iframe_url = 'https:' + iframe_url
             debug_file.write(f'Found iframe URL: {iframe_url}\n')
 
-            iframe_response = requests.get(iframe_url)
-            iframe_response.raise_for_status()  # Проверка на успешный ответ
-            iframe_soup = BeautifulSoup(iframe_response.content, 'html.parser')
+            driver.get(iframe_url)
+            time.sleep(5)  # Ждем загрузки страницы и выполнения скриптов
+
+            iframe_soup = BeautifulSoup(driver.page_source, 'html.parser')
             debug_file.write(f'Fetched iframe page for {iframe_url}\n')
-            
-            # Поиск ссылок, содержащих '.m3u8' в iframe
+
             for link in iframe_soup.find_all('a', href=True):
                 debug_file.write(f'Checking link in iframe: {link["href"]}\n')
-                if re.search(r'\.m3u8', link['href']):
+                if '.m3u8' in link['href']:
                     debug_file.write(f'Found stream URL in iframe: {link["href"]}\n')
+                    driver.quit()
                     return link['href']
-        
-        # Поиск в тегах <script>
+
+        # Поиск в скриптах
         for script in soup.find_all('script'):
             script_content = script.string
             if script_content:
@@ -45,7 +56,10 @@ def fetch_dynamic_url(channel_url, debug_file):
                 if m3u8_urls:
                     for url in m3u8_urls:
                         debug_file.write(f'Found stream URL in script: {url}\n')
+                    driver.quit()
                     return m3u8_urls[0]
+
+        driver.quit()
         return None
     except Exception as e:
         debug_file.write(f'Error fetching URL for {channel_url}: {e}\n')
