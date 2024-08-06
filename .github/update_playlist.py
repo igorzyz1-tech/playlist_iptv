@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
+import requests
 
 def fetch_dynamic_url(channel_url, debug_file):
     try:
@@ -28,8 +29,15 @@ def fetch_dynamic_url(channel_url, debug_file):
                 if source_tag and '.m3u8' in source_tag['src']:
                     stream_url = source_tag['src']
                     debug_file.write(f'Found stream URL: {stream_url}\n')
-                    driver.quit()
-                    return stream_url
+
+                    # Проверка доступности URL
+                    response = requests.get(stream_url, stream=True)
+                    if response.status_code == 200:
+                        debug_file.write(f'URL is accessible: {stream_url}\n')
+                        driver.quit()
+                        return stream_url
+                    else:
+                        debug_file.write(f'URL is not accessible, status code: {response.status_code}\n')
 
         driver.quit()
         return None
