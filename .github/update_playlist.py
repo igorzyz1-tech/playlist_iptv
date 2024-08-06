@@ -19,10 +19,6 @@ def fetch_dynamic_url(channel_url, log_file):
         log_file.write(f'Fetched main page for {channel_url}\n')
         time.sleep(5)  # Ждем загрузки страницы и выполнения скриптов
 
-        # Сохранение страницы для отладки
-        with open('page_source.html', 'w', encoding='utf-8') as f:
-            f.write(driver.page_source)
-
         soup = BeautifulSoup(driver.page_source, 'html.parser')
 
         # Поиск тега <div class="page__player video-inside"> и внутри него тега <video> с атрибутом src
@@ -71,16 +67,16 @@ def update_playlist():
         {"name": "Дом кино", "url": "https://onlinetv.su/tv/kino/110-dom-kino.html"}
     ]
     
-    with open('playlist.m3u', 'w') as log_file:
-        log_file.write('#EXTM3U\n')
+    with open('playlist.m3u', 'w') as playlist_file, open('debug_log.txt', 'w') as log_file:
+        playlist_file.write('#EXTM3U\n')
         for channel in channels:
             log_file.write(f'Fetching dynamic URL for {channel["name"]}\n')
             dynamic_url = fetch_dynamic_url(channel["url"], log_file)
             if dynamic_url:
-                log_file.write(f'#EXTINF:-1 tvg-name="{channel["name"]}",{channel["name"]}\n{dynamic_url}\n')
+                playlist_file.write(f'#EXTINF:-1 tvg-name="{channel["name"]}",{channel["name"]}\n{dynamic_url}\n')
                 log_file.write(f'Successfully fetched URL for {channel["name"]}\n')
             else:
-                log_file.write(f'#EXTINF:-1 tvg-name="{channel["name"]}",{channel["name"]} - URL not found\n')
+                playlist_file.write(f'#EXTINF:-1 tvg-name="{channel["name"]}",{channel["name"]} - URL not found\n')
                 log_file.write(f'Failed to fetch dynamic URL for {channel["name"]}\n')
             time.sleep(2)  # Задержка между запросами для предотвращения блокировки
         log_file.write('Playlist updated successfully.\n')
