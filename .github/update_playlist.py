@@ -9,6 +9,8 @@ def fetch_dynamic_url(channel_url, debug_file):
         # Настройка Selenium WebDriver
         options = webdriver.ChromeOptions()
         options.add_argument("--headless")  # Запуск в фоновом режиме
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
         driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
         driver.get(channel_url)
@@ -43,16 +45,19 @@ def update_playlist():
         {"name": "Дом кино", "url": "https://onlinetv.su/tv/kino/110-dom-kino.html"}
     ]
     
-    with open('playlist.m3u', 'w') as file:
-        file.write('#EXTM3U\n')
+    with open('playlist.m3u', 'w') as playlist_file, open('debug_log.txt', 'w') as debug_file:
+        playlist_file.write('#EXTM3U\n')
         for channel in channels:
-            file.write(f'Fetching dynamic URL for {channel["name"]}\n')
-            dynamic_url = fetch_dynamic_url(channel["url"], file)
+            debug_file.write(f'Fetching dynamic URL for {channel["name"]}\n')
+            dynamic_url = fetch_dynamic_url(channel["url"], debug_file)
             if dynamic_url:
-                file.write(f'#EXTINF:-1 tvg-name="{channel["name"]}",{channel["name"]}\n{dynamic_url}\n')
+                playlist_file.write(f'#EXTINF:-1 tvg-name="{channel["name"]}",{channel["name"]}\n{dynamic_url}\n')
+                debug_file.write(f'Successfully fetched URL for {channel["name"]}\n')
             else:
-                file.write(f'Failed to fetch dynamic URL for {channel["name"]}\n')
-        file.write('Playlist updated successfully.\n')
+                playlist_file.write(f'#EXTINF:-1 tvg-name="{channel["name"]}",{channel["name"]} - URL not found\n')
+                debug_file.write(f'Failed to fetch dynamic URL for {channel["name"]}\n')
+            time.sleep(2)  # Задержка между запросами для предотвращения блокировки
+        debug_file.write('Playlist updated successfully.\n')
 
 if __name__ == "__main__":
     update_playlist()
