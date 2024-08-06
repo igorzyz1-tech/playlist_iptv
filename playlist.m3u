@@ -1,1 +1,30 @@
 #EXTM3U
+Fetching dynamic URL for Русский Роман
+Fetched main page for https://onlinetv.su/tv/kino/122-russkij-roman.html
+Found stream URL: https://ser2.meningilovam.uz/tv/rus_roman_web/index.m3u8?token=ec7eb32e42eefc5567366be8891b2d18e6d90968-ee53e07b24db61bad8a3b99a44bea22f-1722990648-1722979848&remote=20.81.159.98
+URL is accessible and valid: https://ser2.meningilovam.uz/tv/rus_roman_web/index.m3u8?token=ec7eb32e42eefc5567366be8891b2d18e6d90968-ee53e07b24db61bad8a3b99a44bea22f-1722990648-1722979848&remote=20.81.159.98
+#EXTINF:-1 tvg-name="Русский Роман",Русский Роман
+https://ser2.meningilovam.uz/tv/rus_roman_web/index.m3u8?token=ec7eb32e42eefc5567366be8891b2d18e6d90968-ee53e07b24db61bad8a3b99a44bea22f-1722990648-1722979848&remote=20.81.159.98
+Successfully fetched URL for Русский Роман
+Fetching dynamic URL for Золотая Колекция
+Fetched main page for https://onlinetv.su/tv/kino/122-russkij-roman.html
+Found stream URL: https://ser2.meningilovam.uz/tv/rus_roman_web/index.m3u8?token=ea1ca8712b272456174e309c181104862f825c48-44eba045e7b7e8356a6b75e5edde2b0d-1722990658-1722979858&remote=20.81.159.98
+URL is accessible and valid: https://ser2.meningilovam.uz/tv/rus_roman_web/index.m3u8?token=ea1ca8712b272456174e309c181104862f825c48-44eba045e7b7e8356a6b75e5edde2b0d-1722990658-1722979858&remote=20.81.159.98
+#EXTINF:-1 tvg-name="Золотая Колекция",Золотая Колекция
+https://ser2.meningilovam.uz/tv/rus_roman_web/index.m3u8?token=ea1ca8712b272456174e309c181104862f825c48-44eba045e7b7e8356a6b75e5edde2b0d-1722990658-1722979858&remote=20.81.159.98
+Successfully fetched URL for Золотая Колекция
+Fetching dynamic URL for Дом кино Премиум
+Fetched main page for https://onlinetv.su/tv/kino/112-dom-kino-premium.html
+Found stream URL: https://ser2.meningilovam.uz/tv/dom-kino-premium_web/index.m3u8?token=53af34acaad4d297b540f6fb443d61b9e7641e7e-e7978de8993ef56e6cec93c094ba9a85-1722990668-1722979868&remote=20.81.159.98
+URL is accessible and valid: https://ser2.meningilovam.uz/tv/dom-kino-premium_web/index.m3u8?token=53af34acaad4d297b540f6fb443d61b9e7641e7e-e7978de8993ef56e6cec93c094ba9a85-1722990668-1722979868&remote=20.81.159.98
+#EXTINF:-1 tvg-name="Дом кино Премиум",Дом кино Премиум
+https://ser2.meningilovam.uz/tv/dom-kino-premium_web/index.m3u8?token=53af34acaad4d297b540f6fb443d61b9e7641e7e-e7978de8993ef56e6cec93c094ba9a85-1722990668-1722979868&remote=20.81.159.98
+Successfully fetched URL for Дом кино Премиум
+Fetching dynamic URL for Дом кино
+Fetched main page for https://onlinetv.su/tv/kino/110-dom-kino.html
+Found stream URL: https://ser2.meningilovam.uz/tv/domkino_web/index.m3u8?token=80057a67c6fa3a4f88110870814acc790b1f9358-b29fa982ed20527b18a726a4ee3f89aa-1722990678-1722979878&remote=20.81.159.98
+URL is accessible and valid: https://ser2.meningilovam.uz/tv/domkino_web/index.m3u8?token=80057a67c6fa3a4f88110870814acc790b1f9358-b29fa982ed20527b18a726a4ee3f89aa-1722990678-1722979878&remote=20.81.159.98
+#EXTINF:-1 tvg-name="Дом кино",Дом кино
+https://ser2.meningilovam.uz/tv/domkino_web/index.m3u8?token=80057a67c6fa3a4f88110870814acc790b1f9358-b29fa982ed20527b18a726a4ee3f89aa-1722990678-1722979878&remote=20.81.159.98
+Successfully fetched URL for Дом кино
+Playlist updated successfully.
