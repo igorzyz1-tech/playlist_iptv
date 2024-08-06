@@ -6,18 +6,15 @@ from bs4 import BeautifulSoup
 
 def fetch_dynamic_url(channel_url, debug_file):
     try:
-        # Настройка Selenium WebDriver
         options = webdriver.ChromeOptions()
-        options.add_argument("--headless")  # Запуск в фоновом режиме
+        options.add_argument("--headless")
         driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
         driver.get(channel_url)
         debug_file.write(f'Fetched main page for {channel_url}\n')
-        time.sleep(5)  # Ждем загрузки страницы и выполнения скриптов
+        time.sleep(5)
 
         soup = BeautifulSoup(driver.page_source, 'html.parser')
-
-        # Поиск тега <div class="page__player video-inside"> и внутри него тега <video> с атрибутом src
         player_div = soup.find('div', class_='page__player video-inside')
         if player_div:
             video_tag = player_div.find('video')
