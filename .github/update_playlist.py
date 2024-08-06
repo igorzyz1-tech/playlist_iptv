@@ -1,5 +1,4 @@
 import time
-import re
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
@@ -18,46 +17,13 @@ def fetch_dynamic_url(channel_url, debug_file):
 
         soup = BeautifulSoup(driver.page_source, 'html.parser')
 
-        # Поиск ссылок, содержащих '.m3u8'
-        for link in soup.find_all('a', href=True):
-            debug_file.write(f'Checking link: {link["href"]}\n')
-            if '.m3u8' in link['href']:
-                debug_file.write(f'Found stream URL: {link["href"]}\n')
-                driver.quit()
-                return link['href']
-
-        # Альтернативный поиск в тегах <iframe>
-        iframe_tag = soup.find('iframe')
-        if (iframe_tag and 'src' in iframe_tag.attrs):
-            iframe_url = iframe_tag['src']
-            if iframe_url.startswith('//'):
-                iframe_url = 'https:' + iframe_url
-            debug_file.write(f'Found iframe URL: {iframe_url}\n')
-
-            driver.get(iframe_url)
-            time.sleep(5)  # Ждем загрузки страницы и выполнения скриптов
-
-            iframe_soup = BeautifulSoup(driver.page_source, 'html.parser')
-            debug_file.write(f'Fetched iframe page for {iframe_url}\n')
-
-            for link in iframe_soup.find_all('a', href=True):
-                debug_file.write(f'Checking link in iframe: {link["href"]}\n')
-                if '.m3u8' in link['href']:
-                    debug_file.write(f'Found stream URL in iframe: {link["href"]}\n')
-                    driver.quit()
-                    return link['href']
-
-        # Поиск в скриптах
-        for script in soup.find_all('script'):
-            script_content = script.string
-            if script_content:
-                debug_file.write(f'Checking script content\n')
-                m3u8_urls = re.findall(r'https?://[^"]+\.m3u8', script_content)
-                if m3u8_urls:
-                    for url in m3u8_urls:
-                        debug_file.write(f'Found stream URL in script: {url}\n')
-                    driver.quit()
-                    return m3u8_urls[0]
+        # Поиск тега <video> с атрибутом src
+        video_tag = soup.find('video', src=True)
+        if video_tag and '.m3u8' in video_tag['src']:
+            stream_url = video_tag['src']
+            debug_file.write(f'Found stream URL: {stream_url}\n')
+            driver.quit()
+            return stream_url
 
         driver.quit()
         return None
