@@ -25,6 +25,17 @@ def fetch_dynamic_url(channel_url, debug_file):
             driver.quit()
             return stream_url
 
+        # Альтернативный метод поиска URL в атрибутах скриптов
+        script_tags = soup.find_all('script')
+        for script in script_tags:
+            if script.string and 'm3u8' in script.string:
+                start = script.string.find('http')
+                end = script.string.find('.m3u8') + 5
+                stream_url = script.string[start:end]
+                debug_file.write(f'Found stream URL in script: {stream_url}\n')
+                driver.quit()
+                return stream_url
+
         driver.quit()
         return None
     except Exception as e:
