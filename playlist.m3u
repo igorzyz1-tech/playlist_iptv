@@ -1,1 +1,22 @@
 #EXTM3U
+Fetching dynamic URL for Русский Роман
+Fetched main page for https://onlinetv.su/tv/kino/122-russkij-roman.html
+Found stream URL: https://ser2.meningilovam.uz/tv/rus_roman_web/index.m3u8?token=5aaf32a7d8b6d02d3a038c8413c22c5045cf726c-36ff7b7b3c4f9168b611efc368109746-1722984762-1722973962&remote=20.109.38.37
+#EXTINF:-1 tvg-name="Русский Роман",Русский Роман
+https://ser2.meningilovam.uz/tv/rus_roman_web/index.m3u8?token=5aaf32a7d8b6d02d3a038c8413c22c5045cf726c-36ff7b7b3c4f9168b611efc368109746-1722984762-1722973962&remote=20.109.38.37
+Fetching dynamic URL for Золотая Колекция
+Fetched main page for https://onlinetv.su/tv/kino/122-russkij-roman.html
+Found stream URL: https://ser2.meningilovam.uz/tv/rus_roman_web/index.m3u8?token=c7082dd24162f446dca327b05251670cabd14ff4-b1aa8ad4fc27542b7324d015ce4e5349-1722984771-1722973971&remote=20.109.38.37
+#EXTINF:-1 tvg-name="Золотая Колекция",Золотая Колекция
+https://ser2.meningilovam.uz/tv/rus_roman_web/index.m3u8?token=c7082dd24162f446dca327b05251670cabd14ff4-b1aa8ad4fc27542b7324d015ce4e5349-1722984771-1722973971&remote=20.109.38.37
+Fetching dynamic URL for Дом кино Премиум
+Fetched main page for https://onlinetv.su/tv/kino/112-dom-kino-premium.html
+Found stream URL: https://ser2.meningilovam.uz/tv/dom-kino-premium_web/index.m3u8?token=3e902d0751c4287a01cbc2cd777c62a916d2eeb1-3058ea21631fc1725937d8b74385fa40-1722984779-1722973979&remote=20.109.38.37
+#EXTINF:-1 tvg-name="Дом кино Премиум",Дом кино Премиум
+https://ser2.meningilovam.uz/tv/dom-kino-premium_web/index.m3u8?token=3e902d0751c4287a01cbc2cd777c62a916d2eeb1-3058ea21631fc1725937d8b74385fa40-1722984779-1722973979&remote=20.109.38.37
+Fetching dynamic URL for Дом кино
+Fetched main page for https://onlinetv.su/tv/kino/110-dom-kino.html
+Found stream URL: https://ser2.meningilovam.uz/tv/domkino_web/index.m3u8?token=264e3a8a4449c7ded7f171d952225fa79ebec3e8-0f5955e182ee075e0a11b85571d62979-1722984786-1722973986&remote=20.109.38.37
+#EXTINF:-1 tvg-name="Дом кино",Дом кино
+https://ser2.meningilovam.uz/tv/domkino_web/index.m3u8?token=264e3a8a4449c7ded7f171d952225fa79ebec3e8-0f5955e182ee075e0a11b85571d62979-1722984786-1722973986&remote=20.109.38.37
+Playlist updated successfully.
