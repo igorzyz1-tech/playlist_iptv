@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import requests
 from urllib.parse import urlparse, parse_qs
 
-def fetch_dynamic_url(channel_url, debug_file):
+def fetch_dynamic_url(channel_url, log_file):
     try:
         # Настройка Selenium WebDriver
         options = webdriver.ChromeOptions()
@@ -16,7 +16,7 @@ def fetch_dynamic_url(channel_url, debug_file):
         driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
         driver.get(channel_url)
-        debug_file.write(f'Fetched main page for {channel_url}\n')
+        log_file.write(f'Fetched main page for {channel_url}\n')
         time.sleep(5)  # Ждем загрузки страницы и выполнения скриптов
 
         # Сохранение страницы для отладки
@@ -33,7 +33,7 @@ def fetch_dynamic_url(channel_url, debug_file):
                 source_tag = video_tag.find('source', src=True)
                 if source_tag and '.m3u8' in source_tag['src']:
                     stream_url = source_tag['src']
-                    debug_file.write(f'Found stream URL: {stream_url}\n')
+                    log_file.write(f'Found stream URL: {stream_url}\n')
 
                     # Проверка доступности URL
                     response = requests.get(stream_url, stream=True)
@@ -47,20 +47,20 @@ def fetch_dynamic_url(channel_url, debug_file):
                             current_time = int(time.time())
                             
                             if current_time < expiry_time:
-                                debug_file.write(f'URL is accessible and valid: {stream_url}\n')
+                                log_file.write(f'URL is accessible and valid: {stream_url}\n')
                                 driver.quit()
                                 return stream_url
                             else:
-                                debug_file.write(f'Token has expired: {stream_url}\n')
+                                log_file.write(f'Token has expired: {stream_url}\n')
                         else:
-                            debug_file.write(f'No token found in URL: {stream_url}\n')
+                            log_file.write(f'No token found in URL: {stream_url}\n')
                     else:
-                        debug_file.write(f'URL is not accessible, status code: {response.status_code}\n')
+                        log_file.write(f'URL is not accessible, status code: {response.status_code}\n')
 
         driver.quit()
         return None
     except Exception as e:
-        debug_file.write(f'Error fetching URL for {channel_url}: {e}\n')
+        log_file.write(f'Error fetching URL for {channel_url}: {e}\n')
         return None
 
 def update_playlist():
@@ -71,19 +71,19 @@ def update_playlist():
         {"name": "Дом кино", "url": "https://onlinetv.su/tv/kino/110-dom-kino.html"}
     ]
     
-    with open('playlist.m3u', 'w') as playlist_file, open('debug_log.txt', 'w') as debug_file:
-        playlist_file.write('#EXTM3U\n')
+    with open('playlist.m3u', 'w') as log_file:
+        log_file.write('#EXTM3U\n')
         for channel in channels:
-            debug_file.write(f'Fetching dynamic URL for {channel["name"]}\n')
-            dynamic_url = fetch_dynamic_url(channel["url"], debug_file)
+            log_file.write(f'Fetching dynamic URL for {channel["name"]}\n')
+            dynamic_url = fetch_dynamic_url(channel["url"], log_file)
             if dynamic_url:
-                playlist_file.write(f'#EXTINF:-1 tvg-name="{channel["name"]}",{channel["name"]}\n{dynamic_url}\n')
-                debug_file.write(f'Successfully fetched URL for {channel["name"]}\n')
+                log_file.write(f'#EXTINF:-1 tvg-name="{channel["name"]}",{channel["name"]}\n{dynamic_url}\n')
+                log_file.write(f'Successfully fetched URL for {channel["name"]}\n')
             else:
-                playlist_file.write(f'#EXTINF:-1 tvg-name="{channel["name"]}",{channel["name"]} - URL not found\n')
-                debug_file.write(f'Failed to fetch dynamic URL for {channel["name"]}\n')
+                log_file.write(f'#EXTINF:-1 tvg-name="{channel["name"]}",{channel["name"]} - URL not found\n')
+                log_file.write(f'Failed to fetch dynamic URL for {channel["name"]}\n')
             time.sleep(2)  # Задержка между запросами для предотвращения блокировки
-        debug_file.write('Playlist updated successfully.\n')
+        log_file.write('Playlist updated successfully.\n')
 
 if __name__ == "__main__":
     update_playlist()
