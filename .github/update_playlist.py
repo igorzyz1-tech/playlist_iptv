@@ -35,6 +35,17 @@ def fetch_dynamic_url(channel_url, debug_file):
                 if re.search(r'\.m3u8', link['href']):
                     debug_file.write(f'Found stream URL in iframe: {link["href"]}\n')
                     return link['href']
+        
+        # Поиск в тегах <script>
+        for script in soup.find_all('script'):
+            script_content = script.string
+            if script_content:
+                debug_file.write(f'Checking script content\n')
+                m3u8_urls = re.findall(r'https?://[^"]+\.m3u8', script_content)
+                if m3u8_urls:
+                    for url in m3u8_urls:
+                        debug_file.write(f'Found stream URL in script: {url}\n')
+                    return m3u8_urls[0]
         return None
     except Exception as e:
         debug_file.write(f'Error fetching URL for {channel_url}: {e}\n')
