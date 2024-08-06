@@ -17,24 +17,17 @@ def fetch_dynamic_url(channel_url, debug_file):
 
         soup = BeautifulSoup(driver.page_source, 'html.parser')
 
-        # Поиск тега <video> с атрибутом src
-        video_tag = soup.find('video', src=True)
-        if video_tag and '.m3u8' in video_tag['src']:
-            stream_url = video_tag['src']
-            debug_file.write(f'Found stream URL: {stream_url}\n')
-            driver.quit()
-            return stream_url
-
-        # Альтернативный метод поиска URL в атрибутах скриптов
-        script_tags = soup.find_all('script')
-        for script in script_tags:
-            if script.string and 'm3u8' in script.string:
-                start = script.string.find('http')
-                end = script.string.find('.m3u8') + 5
-                stream_url = script.string[start:end]
-                debug_file.write(f'Found stream URL in script: {stream_url}\n')
-                driver.quit()
-                return stream_url
+        # Поиск тега <div class="page__player video-inside"> и внутри него тега <video> с атрибутом src
+        player_div = soup.find('div', class_='page__player video-inside')
+        if player_div:
+            video_tag = player_div.find('video')
+            if video_tag:
+                source_tag = video_tag.find('source', src=True)
+                if source_tag and '.m3u8' in source_tag['src']:
+                    stream_url = source_tag['src']
+                    debug_file.write(f'Found stream URL: {stream_url}\n')
+                    driver.quit()
+                    return stream_url
 
         driver.quit()
         return None
