@@ -19,6 +19,10 @@ def fetch_dynamic_url(channel_url, debug_file):
         debug_file.write(f'Fetched main page for {channel_url}\n')
         time.sleep(5)  # Ждем загрузки страницы и выполнения скриптов
 
+        # Сохранение страницы для отладки
+        with open('page_source.html', 'w', encoding='utf-8') as f:
+            f.write(driver.page_source)
+
         soup = BeautifulSoup(driver.page_source, 'html.parser')
 
         # Поиск тега <div class="page__player video-inside"> и внутри него тега <video> с атрибутом src
