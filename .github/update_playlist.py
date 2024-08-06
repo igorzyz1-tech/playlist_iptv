@@ -28,7 +28,7 @@ def fetch_dynamic_url(channel_url, debug_file):
 
         # Альтернативный поиск в тегах <iframe>
         iframe_tag = soup.find('iframe')
-        if iframe_tag and 'src' in iframe_tag.attrs:
+        if (iframe_tag and 'src' in iframe_tag.attrs):
             iframe_url = iframe_tag['src']
             if iframe_url.startswith('//'):
                 iframe_url = 'https:' + iframe_url
