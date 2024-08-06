@@ -1,9 +1,1 @@
 #EXTM3U
-#EXTINF:-1 tvg-name="Русский Роман",Русский Роман
-https://ser2.meningilovam.uz/tv/rus_roman_web/index.m3u8?token=36c58b387d90fb3fdcb37e94fffee6cb52a37a7e-d97e55ee173e56a84c33537d24f9199e-1722988036-1722977236&remote=172.183.121.17
-#EXTINF:-1 tvg-name="Золотая Колекция",Золотая Колекция
-https://ser2.meningilovam.uz/tv/rus_roman_web/index.m3u8?token=548a99333bfa5f8201139cf06b83c0728089b385-450217e0d61ed31d6b44c2c43361419b-1722988049-1722977249&remote=172.183.121.17
-#EXTINF:-1 tvg-name="Дом кино Премиум",Дом кино Премиум
-https://ser2.meningilovam.uz/tv/dom-kino-premium_web/index.m3u8?token=0f3d5547cbcfc4472a6ae6b23115bb9fc3ca2022-d6342d08b346473c95158ccc528adaa4-1722988059-1722977259&remote=172.183.121.17
-#EXTINF:-1 tvg-name="Дом кино",Дом кино
-https://ser2.meningilovam.uz/tv/domkino_web/index.m3u8?token=02cc22a6c36b0c44306fb96b8866ce356cf21777-fa509b222069cb460c62e275d406d568-1722988069-1722977269&remote=172.183.121.17
