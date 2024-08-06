@@ -25,7 +25,7 @@ jobs:
           pip install requests beautifulsoup4 selenium webdriver-manager
 
       - name: Run update script
-        run: python update_playlist_selenium.py
+        run: python .github/update_playlist.py
 
       - name: Commit and push changes
         run: |
