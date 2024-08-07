@@ -1,9 +1,9 @@
 import time
+import requests
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
-import requests
 from urllib.parse import urlparse, parse_qs
 
 def fetch_dynamic_url(channel_url, log_file):
@@ -73,6 +73,7 @@ def update_playlist():
             log_file.write(f'Fetching dynamic URL for {channel["name"]}\n')
             dynamic_url = fetch_dynamic_url(channel["url"], log_file)
             if dynamic_url:
+                # Сохранение ссылки как статической
                 playlist_file.write(f'#EXTINF:-1 tvg-name="{channel["name"]}",{channel["name"]}\n{dynamic_url}\n')
                 log_file.write(f'Successfully fetched URL for {channel["name"]}\n')
             else:
