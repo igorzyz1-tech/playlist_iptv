@@ -1,5 +1,9 @@
 #EXTM3U
-#EXTINF:-1 tvg-name="Русский Роман",Русский Роман - URL not found
-#EXTINF:-1 tvg-name="Золотая Колекция",Золотая Колекция - URL not found
-#EXTINF:-1 tvg-name="Дом кино Премиум",Дом кино Премиум - URL not found
-#EXTINF:-1 tvg-name="Дом кино",Дом кино - URL not found
+#EXTINF:-1 tvg-name="Русский Роман",Русский Роман
+https://ser2.meningilovam.uz/tv/rus_roman_web/index.m3u8?token=97502ff51395950393cb3cabeacf10e24ba80ebd-cc55665f0f18a69accfdc555a44df267-1724182224-1724171424&remote=20.81.159.30
+#EXTINF:-1 tvg-name="Золотая Колекция",Золотая Колекция
+https://ser2.meningilovam.uz/tv/rus_roman_web/index.m3u8?token=fed6152324ac1a90a6e1d0d3bea9af94302a7de9-a635973320c9b35b50761addd225f1c9-1724182235-1724171435&remote=20.81.159.30
+#EXTINF:-1 tvg-name="Дом кино Премиум",Дом кино Премиум
+https://ser2.meningilovam.uz/tv/dom-kino-premium_web/index.m3u8?token=b44be17ec0412a8e724f27c32f65a8d479e0bad9-ca38fc51c5f91ecc670c54f8febf74c8-1724182245-1724171445&remote=20.81.159.30
+#EXTINF:-1 tvg-name="Дом кино",Дом кино
+https://ser2.meningilovam.uz/tv/domkino_web/index.m3u8?token=42b94b8ff64508840867f4650310a681d7747238-b402e3d57ab69cc0e4ecee800d363017-1724182255-1724171455&remote=20.81.159.30
