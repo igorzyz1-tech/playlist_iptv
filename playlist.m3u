@@ -1,9 +1,9 @@
 #EXTM3U
 #EXTINF:-1 tvg-name="Русский Роман",Русский Роман
-https://ser2.musical.uz/tv/rus_roman_web/index.m3u8?token=eb36fb052dbc61ee1e26493ec5a0ab0dde1c85e5-d76da1feaf46abc69238db7555532f7f-1729602398-1729591598&remote=20.161.78.37
+https://ser2.musical.uz/tv/rus_roman_web/index.m3u8?token=9e192f880c25f0fb9190eb8262be3414e9702630-cecc2cf962425ef765e840316f0f7234-1729605853-1729595053&remote=172.183.108.48
 #EXTINF:-1 tvg-name="Золотая Колекция",Золотая Колекция
-https://ser2.musical.uz/tv/rus_roman_web/index.m3u8?token=4c2a52356760fe2678a2a32a3bae57c31b4fd6f4-3d462b3ec8e574d299d693c391c0b400-1729602410-1729591610&remote=20.161.78.37
+https://ser2.musical.uz/tv/rus_roman_web/index.m3u8?token=184ffbdfaab3d6fa3c2d78322a006b13558ebeda-28e8f8460526d22f97852f8f599d6790-1729605865-1729595065&remote=172.183.108.48
 #EXTINF:-1 tvg-name="Дом кино Премиум",Дом кино Премиум
-https://ser2.musical.uz/tv/dom-kino-premium_web/index.m3u8?token=fefbfd8a734fc3b5fd24d9b2b5d56cecdad4e455-6a962c9aa2b48a2c8f77a044cfb2b2db-1729602421-1729591621&remote=20.161.78.37
+https://ser2.musical.uz/tv/dom-kino-premium_web/index.m3u8?token=fe5572de8ecb064a4c5d7c269d739e264eb93f79-b6143837f82cd0e24bab39df88a3c4ea-1729605878-1729595078&remote=172.183.108.48
 #EXTINF:-1 tvg-name="Дом кино",Дом кино
-https://ser2.musical.uz/tv/domkino_web/index.m3u8?token=dd4edca6453e7bbfb599782881e9450689c13da0-593e535d4325676caf681ba8f526e2d7-1729602432-1729591632&remote=20.161.78.37
+https://ser2.musical.uz/tv/domkino_web/index.m3u8?token=1b4fa1a98c73a5a865e181f591b8ccea5c5885c5-c0989ff04b8a006af7ecb39fb7ce44c6-1729605890-1729595090&remote=172.183.108.48
