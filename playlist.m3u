@@ -1,7 +1,6 @@
 #EXTM3U
 #EXTINF:-1 tvg-name="Русский Роман",Русский Роман - URL not found
 #EXTINF:-1 tvg-name="Золотая Колекция",Золотая Колекция - URL not found
-#EXTINF:-1 tvg-name="Дом кино Премиум",Дом кино Премиум
-https://ser2.musical.uz/tv/dom-kino-premium_web/index.m3u8?token=aa63510b1fe7c992759921045da142531a5c569f-10bd7c7bd9f3426b6b777c04ae206e7a-1734030587-1734019787&remote=52.234.36.39
+#EXTINF:-1 tvg-name="Дом кино Премиум",Дом кино Премиум - URL not found
 #EXTINF:-1 tvg-name="Дом кино",Дом кино
-https://ser2.musical.uz/tv/domkino_web/index.m3u8?token=1ff607cf24edc3a28513ba514299fb608ccc7800-0e5fe8604a5b5907c636dc59f1418ed1-1734030602-1734019802&remote=52.234.36.39
+https://ser2.musical.uz/tv/domkino_web/index.m3u8?token=5f9600fe9dc014305c69cd0c10ce72f46ef12ed8-6080e4902a5b8b8cbc649b3adb4cf722-1734033941-1734023141&remote=20.161.78.34
