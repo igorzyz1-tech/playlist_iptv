@@ -1,8 +1,8 @@
 #EXTM3U
 #EXTINF:-1 tvg-name="Русский Роман",Русский Роман
-https://server5.musical.uz/rus_roman_web/index.m3u8?token=fa12f1eca21bd8b70dc537fb11a9972dec487899-6ea1a0d22044800fea98e3a9a2b7ffe0-1745389600-1745378800&remote=20.49.15.242
+https://server5.musical.uz/rus_roman_web/index.m3u8?token=6a26ca604e20b96bff8948f3b74c66fdf0323f05-7933a7fe26f0352580f16978de59ada7-1745392188-1745381388&remote=20.57.47.206
 #EXTINF:-1 tvg-name="Золотая Колекция",Золотая Колекция
-https://server5.musical.uz/rus_roman_web/index.m3u8?token=5fe8c076fc0a1bc9162b2577ca6bded99c759c53-76875aafbdcedca34c9cacb9673f06bf-1745389612-1745378812&remote=20.49.15.242
+https://server5.musical.uz/rus_roman_web/index.m3u8?token=8c5d10a4dec254f20ab17b05c2cddc41141c17fa-05082890c8335676ef6c211fc1fd9689-1745392201-1745381401&remote=20.57.47.206
 #EXTINF:-1 tvg-name="Дом кино Премиум",Дом кино Премиум
-https://server5.musical.uz/dom-kino-premium_web/index.m3u8?token=8d74ab877255145953915bd6b349be91c0ff6539-6727ff57c5aaea927d74579b016d0ea3-1745389623-1745378823&remote=20.49.15.242
+https://server5.musical.uz/dom-kino-premium_web/index.m3u8?token=0ea7018f09092206990d0ce5c27ed361d6be5c56-022e01cba7f42606df656304f20c18f3-1745392213-1745381413&remote=20.57.47.206
 #EXTINF:-1 tvg-name="Дом кино",Дом кино - URL not found
